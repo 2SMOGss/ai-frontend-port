@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Robert Chich - Cloud Architect</title>
+  <!-- SEO Best Practices -->
+  <meta name="description" content="Portfolio of Robert Chich, Senior Frontend Engineer & Cloud Architect." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@500;700;900&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div id="app">
+    <!-- Background Effects -->
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+    <div class="cyber-grid"></div>
+    <div class="vignette-overlay"></div>
+    <div class="noise-overlay"></div>
+
+    <!-- Navigation Menu -->
+    <nav class="main-nav">
+      <a href="#home" class="logo-link">
+        <img src="/branded-icon.png" alt="Brand Icon" class="logo-icon" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- The Materializer Canvas -->
+    <canvas id="materializer-canvas"></canvas>
+
+    <!-- Main Content (centered group) -->
+    <div id="main-content">
+      <!-- Hero Title -->
+      <div id="hero-text-container">
+        <h1 class="hero-title">ROBERT CHICH</h1>
+        <h2 class="hero-subtitle">Cloud Security Architect</h2>
+      </div>
+
+      <!-- The Swap Button (Card Animation) -->
+      <div id="cta-button-container" class="hidden">
+        <div class="card-border"></div>
+        <button id="cta-button">
+          <!-- Card internal shine/glare effect -->
+          <div class="card-glare"></div>
+          <div class="card-content">
+            <div class="card-scanline"></div>
+            <div class="hex-code">0000000  63 68 61 74 20 77 69 74 68 20 6d 65</div>
+            <div class="main-text">Chat with me to find out more about Robert</div>
+            <div class="chat-badge">CHAT</div>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <!-- Terminal Chat Modal (Hidden initially) -->
+    <div id="chat-modal" class="hidden">
+      <div class="chat-header">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+        <h1 class="title">System Terminal</h1>
+        <button id="close-chat">&times;</button>
+      </div>
+      <div class="chat-body" id="chat-body">
+        <p class="system-msg">[SYSTEM] Agent initialized. Backend integration pending.</p>
+      </div>
+      <div class="chat-footer">
+        <span class="prompt-symbol">&gt;</span>
+        <input type="text" id="chat-input" placeholder="Type a message..." disabled />
+      </div>
+    </div>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
