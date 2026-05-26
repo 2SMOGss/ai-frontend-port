@@ -18,16 +18,24 @@
         <div class="noise"></div>
 
         <!-- Header -->
-        <nav class="p-8 flex justify-between items-center z-50">
+        <nav class="hud-header">
             <div class="logo font-bold text-2xl tracking-tighter">
-                <span class="text-accent">NEURAL</span>_NEXUS
+                <img src="/branded-icon.png" alt="Rob Chich" class="brand-img">
             </div>
-            <div class="status-panel flex items-center gap-4 text-[10px] font-mono opacity-50">
-                <div class="neural-pulse">
+            <div class="status-panel flex items-center gap-4 text-[10px] font-mono">
+                <div class="neural-pulse" id="hud-pulse">
                     <div class="ring"></div>
                     <div class="dot"></div>
                 </div>
-                <span>LINK_STABLE // <span id="timestamp"></span></span>
+                <span id="hud-link-status" class="opacity-50">LINK_STABLE // <span id="timestamp"></span> EST</span>
+                
+                <button id="auth-btn" class="btn-auth-hud flex items-center gap-1.5 ml-2">
+                    <svg class="auth-icon" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" id="auth-btn-icon">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                    <span id="auth-btn-text">VERIFY_IDENTITY</span>
+                </button>
             </div>
         </nav>
 
@@ -40,20 +48,6 @@
                     <div class="hud-panel identity">
                         <h1 class="name">ROB CHICH</h1>
                         <p class="title">Cloud Security & AI Architect</p>
-                    </div>
-
-                    <div class="hud-panel competencies">
-                        <div class="panel-header">
-                            <i data-lucide="brain"></i>
-                            <span>CORE_COMPETENCIES</span>
-                        </div>
-                        <div class="badge-container">
-                            <span class="badge">AWS_CLOUD</span>
-                            <span class="badge">PYTHON_V3</span>
-                            <span class="badge">SECURITY+</span>
-                            <span class="badge">ENTRA_ID</span>
-                            <span class="badge">SPLUNK</span>
-                        </div>
                     </div>
                     
                     <div class="hud-panel metrics">
@@ -102,16 +96,69 @@
                     </div>
                 </main>
 
-                <!-- RIGHT HUD: Live Feed -->
+                <!-- RIGHT HUD: Live Feed & Comms -->
                 <aside class="hud-sidebar right">
-                    <div class="hud-panel stream-panel">
+                    <!-- Contact & Comms Panel -->
+                    <div class="hud-panel contact-panel">
                         <div class="panel-header">
-                            <i data-lucide="rss"></i>
-                            <span>NEURAL_STREAM</span>
+                            <i data-lucide="terminal"></i>
+                            <span>SECURE_COMMS_V1</span>
                         </div>
-                        <div id="thought-stream" class="thought-stream-container scrollbar-hide">
-                            <!-- Thoughts injected here -->
+                        
+                        <!-- Resume and Socials -->
+                        <div class="comms-actions">
+                            <a href="/rob_chich_resume.pdf" download class="btn-resume">
+                                <i data-lucide="download"></i>
+                                <span>DOWNLOAD_RESUME</span>
+                            </a>
+                            <div class="social-links">
+                                <a href="https://linkedin.com/in/robchich" target="_blank" title="LinkedIn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                        <rect x="2" y="9" width="4" height="12"></rect>
+                                        <circle cx="4" cy="4" r="2"></circle>
+                                    </svg>
+                                </a>
+                                <a href="https://github.com/robchich" target="_blank" title="GitHub">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                                    </svg>
+                                </a>
+                                <a href="https://x.com/robchich" target="_blank" title="X (Twitter)">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path>
+                                        <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
+                                    </svg>
+                                </a>
+                                <a href="https://instagram.com/robchich" target="_blank" title="Instagram">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                    </svg>
+                                </a>
+                            </div>
                         </div>
+
+                        <hr class="panel-divider" />
+
+                        <!-- Secure Contact Form -->
+                        <form id="contact-form" class="contact-form">
+                            <div class="form-group">
+                                <input type="text" id="contact-name" placeholder="IDENTIFIER (Name)" required />
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="contact-email" placeholder="COMMS_CHANNEL (Email)" required />
+                            </div>
+                            <div class="form-group">
+                                <textarea id="contact-message" placeholder="TRANSMISSION (Message)" required></textarea>
+                            </div>
+                            <button type="submit" id="contact-submit" class="btn-transmit">
+                                <i data-lucide="send"></i>
+                                <span>TRANSMIT_SIGNAL</span>
+                            </button>
+                            <div id="contact-status" class="contact-status"></div>
+                        </form>
                     </div>
                 </aside>
             </div>
@@ -120,6 +167,92 @@
         </div>
 
         <!-- Tooltip Cursor Removed -->
+        <!-- Cyber Authentication Modal -->
+        <div id="auth-modal" class="auth-modal-overlay hidden">
+            <div class="auth-modal-window">
+                <div class="auth-modal-header">
+                    <div class="window-controls">
+                        <span class="control red" id="close-auth-btn-x"></span>
+                        <span class="control yellow"></span>
+                        <span class="control green"></span>
+                    </div>
+                    <h3 class="auth-modal-title">SECURE_OAUTH_V1</h3>
+                </div>
+                <div class="auth-modal-body">
+                    <div id="auth-initial-state" class="auth-state-container">
+                        <p class="auth-subtitle">SELECT SIGNALS CREDENTIAL SOURCE</p>
+                        
+                        <!-- Pathway 1: Official Google Login Button (Secure, Standard design) -->
+                        <button id="real-google-btn" class="btn-google-real">
+                            <svg class="google-logo" viewBox="0 0 24 24" width="18" height="18" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
+                                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
+                            </svg>
+                            <span>Sign in with Google</span>
+                        </button>
+
+                        <div class="auth-divider">
+                            <span class="divider-line"></span>
+                            <span class="divider-text">OR BYPASS FOR TESTING</span>
+                            <span class="divider-line"></span>
+                        </div>
+
+                        <!-- Pathway 2: One-Click Simulated Fast-Track Recruiter Button -->
+                        <button id="demo-auth-btn" class="btn-demo-recruiter">
+                            <svg class="demo-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                            <span>FAST_TRACK_RECRUITER_DEMO</span>
+                        </button>
+                        
+                        <p class="auth-disclaimer">
+                            Note: Official Google Sign-In establishes a secure Supabase OAuth session. Demo Access simulates a cryptographic handshake for testing. Your credentials are only used locally to personalize the AI agent.
+                        </p>
+                    </div>
+
+                    <!-- Cyber Captcha Human Determination -->
+                    <div id="auth-captcha-state" class="auth-state-container hidden">
+                        <p class="auth-subtitle" style="color: #ff5f56; text-shadow: 0 0 8px rgba(255, 95, 86, 0.3);">⚠️ FIREWALL_INTERCEPT // HUMAN_TEST</p>
+                        <p class="auth-disclaimer" style="margin-top: 4px; margin-bottom: 20px;">
+                            Bots detected on public channels. To prevent automated scraping, tap the correct authorization node to decrypt secure tokens.
+                        </p>
+                        
+                        <div class="captcha-instruction" style="font-family: var(--font-mono); font-size: 10px; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 16px; text-transform: uppercase;">
+                            SELECT ACTIVE NODE: <span id="captcha-target" style="font-weight: 700; color: #000; background: var(--accent); padding: 2px 6px; border-radius: 4px;">SHIELD</span>
+                        </div>
+
+                        <div class="captcha-grid" id="captcha-grid">
+                            <!-- Randomized dynamic node buttons loaded by JS -->
+                        </div>
+                        
+                        <button id="captcha-back-btn" class="btn-transmit" style="margin-top: 24px; width: auto; padding: 6px 16px;">
+                            <span>RETURN_TO_SOURCES</span>
+                        </button>
+                    </div>
+
+                    <!-- Cryptographic Handshake Loading screen -->
+                    <div id="auth-loading-state" class="auth-state-container hidden">
+                        <div class="cyber-spinner-container">
+                            <div class="cyber-spinner"></div>
+                            <div class="cyber-spinner-inner"></div>
+                        </div>
+                        <h4 id="auth-loading-title" class="loading-title">ESTABLISHING SECURE OAUTH LINK</h4>
+                        <div class="handshake-logs scrollbar-hide" id="handshake-logs">
+                            <!-- Dynamically appended high tech crypt logs -->
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill" id="auth-progress-fill"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
     <script type="module" src="/main.js"></script>
 </body>
