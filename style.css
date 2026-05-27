@@ -1188,4 +1188,90 @@ body {
   filter: drop-shadow(0 0 4px rgba(39, 201, 63, 0.3));
 }
 
+/* Responsive HUD Design Systems */
+@media (max-width: 1024px) {
+  body {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    user-select: auto;
+  }
+
+  #app {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .hud-header {
+    padding: 16px 20px;
+  }
+
+  .hud-main {
+    flex: 1 1 auto;
+    height: auto;
+    overflow: visible;
+    padding: 20px 16px 40px 16px;
+  }
+
+  .hud-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 24px;
+    height: auto;
+  }
+
+  .hud-sidebar {
+    height: auto;
+    gap: 20px;
+  }
+
+  .hud-sidebar.left {
+    order: 1; /* Identity & Metrics at the top */
+  }
+
+  .hud-center {
+    order: 2; /* System Terminal in the center */
+    height: auto;
+    width: 100%;
+  }
+
+  .terminal-window {
+    max-width: 100%;
+    height: 520px;
+    max-height: 80vh;
+  }
+
+  .terminal-body {
+    min-height: 250px;
+  }
+
+  .hud-sidebar.right {
+    order: 3; /* Contact panel at the bottom */
+    justify-content: flex-start;
+  }
+
+  .hud-panel {
+    opacity: 1 !important; /* Prevent scroll animation locks on mobile */
+    transform: none !important;
+  }
+
+  /* Secure Comms Button Adjustments */
+  .comms-actions {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .btn-resume {
+    width: 100%;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .social-links {
+    width: 100%;
+    justify-content: center;
+    gap: 16px;
+  }
+}
+
+
 
