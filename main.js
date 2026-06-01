@@ -208,7 +208,7 @@ async function sendMessage() {
         if (contentType.includes('application/json')) {
             const data = await res.json();
             full = data.reply || data.error || '[ERROR] Failed to obtain signal.';
-            agentMsg.innerText = full;
+            agentMsg.innerHTML = formatMessageText(full);
             chatBody.scrollTop = chatBody.scrollHeight;
         } else {
             const reader = res.body.getReader();
@@ -222,6 +222,7 @@ async function sendMessage() {
                 agentMsg.innerText = full;
                 chatBody.scrollTop = chatBody.scrollHeight;
             }
+            agentMsg.innerHTML = formatMessageText(full);
         }
 
         chatHistory.push({ role: 'user', content: text }, { role: 'assistant', content: full });
@@ -236,6 +237,34 @@ async function sendMessage() {
         chatInput.disabled = false;
         chatInput.focus();
     }
+}
+
+function formatMessageText(text) {
+    let escaped = text
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+
+    // 1. Convert markdown links: [Link Text](https://example.com) -> <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="chat-link">Link Text</a>
+    escaped = escaped.replace(/\[([^\]]+)\]\((https?:\/\/[^\s\)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="chat-link">$1</a>');
+
+    // 2. Convert raw remaining URLs: https://example.com -> <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="chat-link">https://example.com</a>
+    escaped = escaped.replace(/(?<!href=")(https?:\/\/[^\s<]+)/g, (match) => {
+        let url = match;
+        let trailing = '';
+        const m = match.match(/[.,;:?!]+$/);
+        if (m) {
+            url = match.substring(0, match.length - m[0].length);
+            trailing = m[0];
+        }
+        return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="chat-link">${url}</a>${trailing}`;
+    });
+
+    // 3. Convert linebreaks
+    escaped = escaped.replace(/\n/g, '<br>');
+    return escaped;
 }
 
 function appendMessage(role, text) {

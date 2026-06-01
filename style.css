@@ -505,6 +505,32 @@ body {
   text-shadow: 0 0 2px rgba(255, 77, 0, 0.1);
 }
 
+.chat-link {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: bold;
+  border-bottom: 1px dashed rgba(255, 77, 0, 0.4);
+  transition: all 0.2s ease;
+}
+
+.chat-link:hover {
+  color: #ff884d;
+  border-bottom-style: solid;
+  border-bottom-color: #ff884d;
+  text-shadow: 0 0 6px var(--accent-glow);
+}
+
+.message-container.user .chat-link {
+  color: #27c93f;
+  border-bottom-color: rgba(39, 201, 63, 0.4);
+}
+
+.message-container.user .chat-link:hover {
+  color: #57ff70;
+  border-bottom-color: #57ff70;
+  text-shadow: 0 0 6px rgba(39, 201, 63, 0.4);
+}
+
 @keyframes msg-fade {
   from { opacity: 0; transform: translateX(-10px); }
   to { opacity: 1; transform: translateX(0); }
