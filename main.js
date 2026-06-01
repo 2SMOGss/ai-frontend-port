@@ -156,7 +156,7 @@ function renderThought(thought, animate = true) {
             <span class="font-mono text-[9px] text-accent uppercase tracking-widest">${thought.metadata?.type || 'observation'}</span>
             <span class="text-[8px] opacity-30">${new Date(thought.created_at).toLocaleTimeString()}</span>
         </div>
-        <p class="text-[11px] leading-relaxed opacity-70">${thought.content}</p>
+        <p class="text-[11px] leading-relaxed opacity-70">${formatMessageText(thought.content)}</p>
     `;
     thoughtStream.prepend(card);
     if (thoughtStream.children.length > 20) thoughtStream.lastElementChild.remove();
@@ -310,11 +310,13 @@ function appendMessage(role, text) {
         roleLabel = 'ROB_BRAIN // RESPONSE';
     }
     
+    const formattedText = (role === 'user') ? formatMessageText(text) : text;
+    
     div.innerHTML = `
         ${avatarHTML}
         <div class="message-content">
             <div class="message-header">${roleLabel}</div>
-            <div class="message-text">${text}</div>
+            <div class="message-text">${formattedText}</div>
         </div>
     `;
     
@@ -607,7 +609,7 @@ function appendSystemMessage(text) {
     div.className = 'system-message';
     div.innerHTML = `
         <span class="timestamp">[System]</span>
-        <span class="content text-[11px]" style="color: #27c93f; text-shadow: 0 0 4px rgba(39, 201, 63, 0.2);">${text}</span>
+        <span class="content text-[11px]" style="color: #27c93f; text-shadow: 0 0 4px rgba(39, 201, 63, 0.2);">${formatMessageText(text)}</span>
     `;
     chatBody.appendChild(div);
     chatBody.scrollTop = chatBody.scrollHeight;
